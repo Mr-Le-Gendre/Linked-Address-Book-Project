@@ -3,12 +3,9 @@
 
 // Parameterized constructor
 extPersonType::extPersonType(std::string firstName, std::string lastName, int month, int day, int year,
-    std::string street, std::string city, std::string state, int zip, // Change zip to int
-    std::string relationshipTag)
-    : personType(firstName, lastName), birthDate(month, day, year), address(street, city, state, zip) {
-    phoneNumber = "N/A"; // Set a default value or parameterize as needed
-    relationship = relationshipTag;
-}
+    std::string street, std::string city, std::string state, int zip,
+    std::string phoneNumber, std::string relationshipTag)
+    : personType(firstName, lastName), birthDate(month, day, year), address(street, city, state, zip), phoneNumber(phoneNumber), relationship(relationshipTag) {}
 
 // Print function
 void extPersonType::print() const {

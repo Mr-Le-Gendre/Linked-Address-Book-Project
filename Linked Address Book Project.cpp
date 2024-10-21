@@ -13,8 +13,8 @@ void loadAddressBook(addressBookType& addressBook) {
         string firstName, lastName, street, city, state, relationship, phoneNumber;
         int month, day, year, zip;
 
-        while (inputFile >> firstName >> lastName >> month >> day >> year >> ws && getline(inputFile, street) && getline(inputFile, city) && getline(inputFile, state) && inputFile >> zip >> phoneNumber >> ws && getline(inputFile, relationship)) {
-            extPersonType person(firstName, lastName, month, day, year, street, city, state, zip, relationship);
+        while (inputFile >> firstName >> lastName >> month >> day >> year >> ws && getline(inputFile, street) && getline(inputFile, city) && getline(inputFile, state) && inputFile >> zip >> ws && inputFile >> phoneNumber >> ws && getline(inputFile, relationship)) {
+            extPersonType person(firstName, lastName, month, day, year, street, city, state, zip, phoneNumber, relationship);
             addressBook.addPerson(person);
         }
         inputFile.close();

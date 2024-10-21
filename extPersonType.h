@@ -18,8 +18,8 @@ public:
     extPersonType() : birthDate(), address() {}
     // Parameterized constructor
     extPersonType(std::string firstName, std::string lastName, int month, int day, int year,
-        std::string street, std::string city, std::string state, int zip, // Change zip to int
-        std::string relationshipTag);
+        std::string street, std::string city, std::string state, int zip,
+        std::string phoneNumber, std::string relationshipTag);
 
     // Getters
     dateType getBirthDate() const { return birthDate; } // Add this method
