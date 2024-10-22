@@ -1,15 +1,29 @@
 #include "personType.h"
+#include <iostream>
 
-// Default constructor
-personType::personType() : firstName(""), lastName("") {}
-
-// Parameterized constructor
-personType::personType(const std::string& firstName, const std::string& lastName) {
-    this->firstName = firstName;
-    this->lastName = lastName;
+void personType::setName(const std::string& first, const std::string& last)
+{
+    firstName = first;
+    lastName = last;
 }
 
-// Print function
-void personType::print() const {
+std::string personType::getFirstName() const
+{
+    return firstName;
+}
+
+std::string personType::getLastName() const
+{
+    return lastName;
+}
+
+void personType::printName() const
+{
     std::cout << firstName << " " << lastName;
+}
+
+personType::personType(const std::string& first, const std::string& last)
+{
+    firstName = first;
+    lastName = last;
 }

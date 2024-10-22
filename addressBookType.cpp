@@ -2,44 +2,74 @@
 #include <iostream>
 #include <algorithm> // Include for transform
 
-void addressBookType::addPerson(const extPersonType& person) {
-    addressBook.push_back(person);
+void addressBookType::addEntry(const extPersonType& newEntry)
+{
+    insert(newEntry);
 }
 
-void addressBookType::displayAll() const {
-    for (const auto& person : addressBook) {
-        person.print();
-        std::cout << std::endl; // Add a space between entries
+void addressBookType::displayAllEntries() const
+{
+    nodeType<extPersonType>* current = first;
+    while (current != nullptr)
+    {
+        current->info.print();
+        current = current->link;
     }
 }
 
-void addressBookType::displayByName(const std::string& lastName) const {
-    for (const auto& person : addressBook) {
-        std::string personLastName = person.getLastName();
-        transform(personLastName.begin(), personLastName.end(), personLastName.begin(), ::tolower); // Convert to lowercase
-        if (personLastName == lastName) {
-            person.print();
-            std::cout << std::endl; // Add a space between entries
+void addressBookType::displayEntryByLastName(const std::string& lastName, const std::string& firstName) const
+{
+    std::string searchLastName = lastName;
+    std::string searchFirstName = firstName;
+    std::transform(searchLastName.begin(), searchLastName.end(), searchLastName.begin(), ::tolower);
+    std::transform(searchFirstName.begin(), searchFirstName.end(), searchFirstName.begin(), ::tolower);
+
+    nodeType<extPersonType>* current = first;
+    while (current != nullptr)
+    {
+        std::string currentLastName = current->info.getLastName();
+        std::string currentFirstName = current->info.getFirstName();
+        std::transform(currentLastName.begin(), currentLastName.end(), currentLastName.begin(), ::tolower);
+        std::transform(currentFirstName.begin(), currentFirstName.end(), currentFirstName.begin(), ::tolower);
+
+        if (currentLastName == searchLastName && currentFirstName == searchFirstName)
+        {
+            current->info.print();
+            return;
         }
+        current = current->link;
+    }
+    std::cout << "Entry not found." << std::endl;
+}
+
+void addressBookType::displayEntriesByBirthMonth(int month) const
+{
+    nodeType<extPersonType>* current = first;
+    while (current != nullptr)
+    {
+        if (current->info.getBirthMonth() == month)
+        {
+            current->info.print();
+        }
+        current = current->link;
     }
 }
 
-void addressBookType::displayByMonth(int month) const {
-    for (const auto& person : addressBook) {
-        if (person.getBirthDate().getMonth() == month) { // Assuming getMonth() method in dateType
-            person.print();
-            std::cout << std::endl; // Add a space between entries
-        }
-    }
-}
+void addressBookType::displayEntriesByRelationship(const std::string& relationship) const
+{
+    std::string searchRelationship = relationship;
+    std::transform(searchRelationship.begin(), searchRelationship.end(), searchRelationship.begin(), ::tolower);
 
-void addressBookType::displayByRelationship(const std::string& relationship) const {
-    for (const auto& person : addressBook) {
-        std::string personRelationship = person.getRelationship();
-        transform(personRelationship.begin(), personRelationship.end(), personRelationship.begin(), ::tolower); // Convert to lowercase
-        if (personRelationship == relationship) {
-            person.print();
-            std::cout << std::endl; // Add a space between entries
+    nodeType<extPersonType>* current = first;
+    while (current != nullptr)
+    {
+        std::string currentRelationship = current->info.getRelationship();
+        std::transform(currentRelationship.begin(), currentRelationship.end(), currentRelationship.begin(), ::tolower);
+
+        if (currentRelationship == searchRelationship)
+        {
+            current->info.print();
         }
+        current = current->link;
     }
 }

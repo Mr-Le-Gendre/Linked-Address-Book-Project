@@ -14,8 +14,9 @@ void loadAddressBook(addressBookType& addressBook) {
         int month, day, year, zip;
 
         while (inputFile >> firstName >> lastName >> month >> day >> year >> ws && getline(inputFile, street) && getline(inputFile, city) && getline(inputFile, state) && inputFile >> zip >> ws && inputFile >> phoneNumber >> ws && getline(inputFile, relationship)) {
-            extPersonType person(firstName, lastName, month, day, year, street, city, state, zip, phoneNumber, relationship);
-            addressBook.addPerson(person);
+            extPersonType person;
+            person.setInfo(firstName, lastName, dateType(month, day, year), addressType(street, city, state, zip), phoneNumber, relationship);
+            addressBook.addEntry(person);
         }
         inputFile.close();
     }
@@ -44,29 +45,29 @@ int main() {
 
         switch (choice) {
         case 1:
-            addressBook.displayAll(); // Display all entries
+            addressBook.displayAllEntries(); // Display all entries
             break;
         case 2: {
-            string lastName;
+            string lastName, firstName;
             cout << "Enter last name: ";
             cin >> lastName;
-            transform(lastName.begin(), lastName.end(), lastName.begin(), ::tolower); // Convert to lowercase
-            addressBook.displayByName(lastName); // Display entry by last name
+            cout << "Enter first name: ";
+            cin >> firstName;
+            addressBook.displayEntryByLastName(lastName, firstName); // Display entry by last name
             break;
         }
         case 3: {
             int month;
             cout << "Enter birth month: ";
             cin >> month;
-            addressBook.displayByMonth(month); // Assuming you have this method
+            addressBook.displayEntriesByBirthMonth(month); // Display entries by birth month
             break;
         }
         case 4: {
             string relationship;
             cout << "Enter relationship tag: ";
             cin >> relationship;
-            transform(relationship.begin(), relationship.end(), relationship.begin(), ::tolower); // Convert to lowercase
-            addressBook.displayByRelationship(relationship); // Assuming you have this method
+            addressBook.displayEntriesByRelationship(relationship); // Display entries by relationship
             break;
         }
         case 5:

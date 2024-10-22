@@ -1,20 +1,17 @@
-#ifndef ADDRESSBOOKTYPE_H
-#define ADDRESSBOOKTYPE_H
+#ifndef H_addressBookType
+#define H_addressBookType
 
-#include <vector>
+#include "orderedLinkedList.h"
 #include "extPersonType.h"
 
-class addressBookType {
-private:
-    std::vector<extPersonType> addressBook;
-
+class addressBookType : public orderedLinkedList<extPersonType>
+{
 public:
-    void addPerson(const extPersonType& person);
-    void displayAll() const;
-    void displayByName(const std::string& lastName) const;
-    void displayByMonth(int month) const; // Add this line
-    void displayByRelationship(const std::string& relationship) const; // Add this line
-    // Other methods...
+    void addEntry(const extPersonType& newEntry);
+    void displayAllEntries() const;
+    void displayEntryByLastName(const std::string& lastName, const std::string& firstName) const;
+    void displayEntriesByBirthMonth(int month) const;
+    void displayEntriesByRelationship(const std::string& relationship) const;
 };
 
-#endif // ADDRESSBOOKTYPE_H
+#endif

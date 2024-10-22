@@ -1,26 +1,25 @@
-#ifndef ADDRESSTYPE_H
-#define ADDRESSTYPE_H
+#ifndef H_addressType
+#define H_addressType
 
-#include <iostream>
 #include <string>
 
-class addressType {
+class addressType
+{
+public:
+    void setAddress(const std::string& street, const std::string& city, const std::string& state, int zip);
+    std::string getStreetAddress() const;
+    std::string getCity() const;
+    std::string getState() const;
+    int getZipCode() const;
+    void printAddress() const;
+
+    addressType(const std::string& street = "", const std::string& city = "", const std::string& state = "", int zip = 0);
+
 private:
-    std::string street;
+    std::string streetAddress;
     std::string city;
     std::string state;
     int zipCode;
-
-public:
-    // Constructors
-    addressType();
-    addressType(const std::string& street, const std::string& city, const std::string& state, int zipCode);
-
-    // Accessor function
-    void print() const;
-
-    // Setter functions
-    void setAddress(const std::string& street, const std::string& city, const std::string& state, int zipCode);
 };
 
-#endif // ADDRESSTYPE_H
+#endif

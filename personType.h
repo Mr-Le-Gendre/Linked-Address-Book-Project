@@ -1,21 +1,21 @@
-#ifndef PERSONTYPE_H
-#define PERSONTYPE_H
+#ifndef H_personType
+#define H_personType
 
-#include <iostream>
 #include <string>
 
-class personType {
+class personType
+{
+public:
+    void setName(const std::string& first, const std::string& last);
+    std::string getFirstName() const;
+    std::string getLastName() const;
+    void printName() const;
+
+    personType(const std::string& first = "", const std::string& last = "");
+
 protected:
     std::string firstName;
     std::string lastName;
-
-public:
-    // Constructors
-    personType();
-    personType(const std::string& firstName, const std::string& lastName);
-
-    // Accessor function
-    void print() const;
 };
 
-#endif // PERSONTYPE_H
+#endif

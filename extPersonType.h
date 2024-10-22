@@ -1,33 +1,29 @@
-#ifndef EXTPERSONTYPE_H
-#define EXTPERSONTYPE_H
+#ifndef H_extPersonType
+#define H_extPersonType
 
-#include <string>
-#include "personType.h" // Include personType header
-#include "addressType.h"
+#include "personType.h"
 #include "dateType.h"
+#include "addressType.h"
+#include <string>
 
-class extPersonType : public personType {
+class extPersonType : public personType
+{
+public:
+    bool operator==(const extPersonType& other) const;
+    bool operator!=(const extPersonType& other) const;
+    bool operator>=(const extPersonType& other) const;
+    void print() const;
+    void setInfo(const std::string& first, const std::string& last, const dateType& bDate, const addressType& addr, const std::string& phone, const std::string& rel);
+    std::string getFirstName() const;
+    std::string getLastName() const;
+    int getBirthMonth() const;
+    std::string getRelationship() const;
+
 private:
-    dateType birthDate; // Assuming you have a dateType class
-    addressType address; // Assuming you have an addressType class
+    dateType birthDate;
+    addressType address;
     std::string phoneNumber;
     std::string relationship;
-
-public:
-    // Default constructor
-    extPersonType() : birthDate(), address() {}
-    // Parameterized constructor
-    extPersonType(std::string firstName, std::string lastName, int month, int day, int year,
-        std::string street, std::string city, std::string state, int zip,
-        std::string phoneNumber, std::string relationshipTag);
-
-    // Getters
-    dateType getBirthDate() const { return birthDate; } // Add this method
-    std::string getRelationship() const { return relationship; } // Add this method
-
-    void print() const; // Print function to display the person's details
-    std::string getLastName() const; // Getter for last name
-    // Other methods...
 };
 
-#endif // EXTPERSONTYPE_H
+#endif

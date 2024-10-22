@@ -1,20 +1,21 @@
-#ifndef DATETYPE_H
-#define DATETYPE_H
+#ifndef H_dateType
+#define H_dateType
 
-#include <iostream>
-
-class dateType {
+class dateType
+{
 public:
-    // Constructors
-    dateType(); // Default constructor
-    dateType(int month, int day, int year); // Parameterized constructor
+    void setDate(int month, int day, int year);
+    int getMonth() const;
+    int getDay() const;
+    int getYear() const;
+    void printDate() const;
 
-    // Methods
-    int getMonth() const { return month; } // Add this method
-    void print() const; // Declare the print method
+    dateType(int month = 1, int day = 1, int year = 1900);
 
 private:
-    int month, day, year; // Example members, adjust as necessary
+    int dMonth;
+    int dDay;
+    int dYear;
 };
 
-#endif // DATETYPE_H
+#endif
