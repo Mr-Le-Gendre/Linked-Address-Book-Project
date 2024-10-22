@@ -50,7 +50,27 @@ int extPersonType::getBirthMonth() const
     return birthDate.getMonth();
 }
 
+int extPersonType::getBirthDay() const
+{
+    return birthDate.getDay();
+}
+
+int extPersonType::getBirthYear() const
+{
+    return birthDate.getYear();
+}
+
 std::string extPersonType::getRelationship() const
 {
     return relationship;
+}
+
+addressType extPersonType::getAddress() const
+{
+    return address;
+}
+
+std::string extPersonType::getPhoneNumber() const
+{
+    return phoneNumber;
 }

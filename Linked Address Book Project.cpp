@@ -39,7 +39,9 @@ int main() {
         cout << "2 - Display an entry by a person's last name." << endl;
         cout << "3 - Display all entries with a given birth month." << endl;
         cout << "4 - Display all entries with a given relationship tag (Business, Friend, Family)." << endl;
-        cout << "5 - Quit." << endl;
+        cout << "5 - Add a new entry." << endl;
+        cout << "6 - Remove an entry." << endl;
+        cout << "7 - Quit." << endl;
         cout << "Enter your choice: ";
         cin >> choice;
 
@@ -71,13 +73,26 @@ int main() {
             break;
         }
         case 5:
+            addressBook.getNewEntry(); // Add a new entry
+            break;
+        case 6: {
+            string lastName, firstName;
+            cout << "Enter last name: ";
+            cin >> lastName;
+            cout << "Enter first name: ";
+            cin >> firstName;
+            addressBook.removeEntry(lastName, firstName); // Remove an entry
+            break;
+        }
+        case 7:
+            addressBook.saveToFile("AddressBookData.txt"); // Save updated information to file
             cout << "Exiting the program." << endl;
             break;
         default:
             cout << "Invalid choice, please try again." << endl;
             break;
         }
-    } while (choice != 5);
+    } while (choice != 7);
 
     return 0;
 }

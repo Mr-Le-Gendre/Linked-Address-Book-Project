@@ -16,10 +16,10 @@ public:
     addressType(const std::string& street = "", const std::string& city = "", const std::string& state = "", int zip = 0);
 
 private:
-    std::string streetAddress;
-    std::string city;
-    std::string state;
-    int zipCode;
+    std::string streetAddress{ "" };
+    std::string city{ "" };
+    std::string state{ "" };
+    int zipCode{ 0 };
 };
 
 #endif

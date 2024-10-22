@@ -12,6 +12,9 @@ public:
     void displayEntryByLastName(const std::string& lastName, const std::string& firstName) const;
     void displayEntriesByBirthMonth(int month) const;
     void displayEntriesByRelationship(const std::string& relationship) const;
+    void getNewEntry();
+    void removeEntry(const std::string& lastName, const std::string& firstName);
+    void saveToFile(const std::string& filename) const;
 };
 
 #endif

@@ -17,7 +17,11 @@ public:
     std::string getFirstName() const;
     std::string getLastName() const;
     int getBirthMonth() const;
+    int getBirthDay() const;
+    int getBirthYear() const;
     std::string getRelationship() const;
+    addressType getAddress() const;
+    std::string getPhoneNumber() const;
 
 private:
     dateType birthDate;

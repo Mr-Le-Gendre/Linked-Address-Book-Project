@@ -13,9 +13,9 @@ public:
     dateType(int month = 1, int day = 1, int year = 1900);
 
 private:
-    int dMonth;
-    int dDay;
-    int dYear;
+    int dMonth{ 1 };
+    int dDay{ 1 };
+    int dYear{ 1900 };
 };
 
 #endif
